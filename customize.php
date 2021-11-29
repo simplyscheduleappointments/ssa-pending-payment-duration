@@ -1,8 +1,8 @@
 <?php
 /**
- * Plugin Name: SSA Customization - Pending Form Duration
+ * Plugin Name: SSA Customization - Pending Payment Duration
  * Plugin URI:  https://simplyscheduleappointments.com
- * Description: Adjust pending_form duration (to allow for slow responses from Paypal)
+ * Description: Adjust pending_payment duration (to customize the pending payment duration for use cases like PayPal holding e-check payments)
  * Version:     1.0.0
  * Author:      Simply Schedule Appointments
  * Author URI:  https://simplyscheduleappointments.com
@@ -36,11 +36,11 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-add_filter( 'ssa/forms/pending_form_duration', 'ssa_customize_forms_pending_form_duration', 10, 3 );
+add_filter( 'ssa/payments/pending_payment_duration', 'ssa_customize_payments_pending_payment_duration', 10, 3 );
 function ssa_customize_forms_pending_form_duration( $duration_in_seconds, $appointment_id, $data ) {
 	// appointments will stay in "pending_form" status for $duration_in_seconds before transitioning to "abandoned" (and becoming available for other customers to book)
 	
-	return 10 * MINUTE_IN_SECONDS; // 10 minute duration
+	return 72 * MINUTE_IN_SECONDS; // 72 hour duration
 
 	// other ideas/examples below this line
 	// return 3 * HOUR_IN_SECONDS; // 3 hour duration
