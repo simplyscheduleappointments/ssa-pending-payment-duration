@@ -37,10 +37,10 @@
  */
 
 add_filter( 'ssa/payments/pending_payment_duration', 'ssa_customize_payments_pending_payment_duration', 10, 3 );
-function ssa_customize_forms_pending_form_duration( $duration_in_seconds, $appointment_id, $data ) {
-	// appointments will stay in "pending_form" status for $duration_in_seconds before transitioning to "abandoned" (and becoming available for other customers to book)
+function ssa_customize_payments_pending_payment_duration( $seconds_to_hold_pending_payment, $appointment_id, $data ) {
+	// appointments will stay in "pending_form" status for $seconds_to_hold_pending_payment, $appointment_id, $data before transitioning to "abandoned" (and becoming available for other customers to book)
 	
-	return 72 * MINUTE_IN_SECONDS; // 72 hour duration
+	return 72 * HOUR_IN_SECONDS; // 72 hour duration
 
 	// other ideas/examples below this line
 	// return 3 * HOUR_IN_SECONDS; // 3 hour duration
